@@ -38,6 +38,10 @@ const SanitasEmpresarialProvider = ({ children }) => {
   const [captchaValue, setCaptchaValue] = React.useState(null)
   const [registerId, setRegisterId] = React.useState(null)
 
+  // Estado para el pop up inicial
+  const [showPopUp, setShowPopUp] = React.useState(false)
+  const [popUpImage, setPopUpImage] = React.useState(null)
+
   //Estados para modales
   const [showServiceFailModal, setShowServiceFailModal] = React.useState(false)
   const [showNotEmployerModal, setShowNotEmployerModal] = React.useState(false)
@@ -99,6 +103,34 @@ const SanitasEmpresarialProvider = ({ children }) => {
 
   /** Tipos de servicio que puede seleccionar el usuario. Inicialmente sólo es un objeto, pero podrían aumentar. Mirar si esto después debe convertirse en un array */
   const [serviceType] = React.useState({ value: 1, name: 'Incapacidades' })
+
+  // Función para obtener la imagen del popup desde cari
+  const getPopUpImage = async () => {
+    const data = new FormData()
+    data.append('operation', 'displayImages')
+
+    const requestOptions = {
+      method: 'POST',
+      body: data,
+      redirect: 'follow',
+    }
+
+    try {
+      const res = await fetch(
+        'https://qa.cariai.com/epssanitasempresadevelop/process',
+        requestOptions
+      )
+      const response = await res.json()
+      console.log(response.message.imgPath)
+      if (response.message.imgFound === 1) {
+        setShowPopUp(true)
+        setPopUpImage(response.message.imgPath)
+      }
+      // console.log(res, response)
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
   // Función de consumo de servicios en controlador
   const callApi = async (
@@ -316,6 +348,10 @@ const SanitasEmpresarialProvider = ({ children }) => {
     return data
   }*/
 
+  React.useEffect(() => {
+    getPopUpImage()
+  }, [])
+
   return (
     <SanitasEmpresarialContext.Provider
       value={{
@@ -382,6 +418,11 @@ const SanitasEmpresarialProvider = ({ children }) => {
         loader,
         captchaValue,
         setCaptchaValue,
+        showPopUp,
+        setShowPopUp,
+        getPopUpImage,
+        popUpImage,
+        setPopUpImage,
       }}
     >
       {children}

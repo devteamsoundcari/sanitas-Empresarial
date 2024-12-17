@@ -13,6 +13,7 @@ import { FindIcon } from '../atoms/FindIcon'
 import '../styles/Form.css'
 import Loader from '../atoms/Loader'
 import { BubbleChat } from '../atoms/BubbleChat'
+import { ImageModal } from './ImageModal'
 
 const Form = () => {
   const {
@@ -70,6 +71,7 @@ const Form = () => {
     captchaValue,
     setCaptchaValue,
     setUserName,
+    showPopUp,
   } = useContext(SanitasEmpresarialContext)
 
   const handleDocTypeChange = (e) => {
@@ -539,6 +541,7 @@ const Form = () => {
       </form>
       {showServiceFailModal && <ServiceFailModal />}
       {showNotEmployerModal && <NotEmployerModal />}
+      {showPopUp && <ImageModal />}
     </div>
   )
 }
