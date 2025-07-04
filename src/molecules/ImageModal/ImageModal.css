@@ -18,7 +18,7 @@
   object-fit: cover;
 }
 
-.btn-container {
+.modal-btn-container {
   display: flex;
   justify-content: center;
   align-items: center;

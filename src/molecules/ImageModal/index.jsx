@@ -17,7 +17,7 @@ const ImageModal = () => {
           className="image-modal"
           alt="símbolo informativo"
         />
-        <div className="btn-container">
+        <div className="modal-btn-container">
           <Button2
             variant={'nb-primary'}
             value={'Continuar'}

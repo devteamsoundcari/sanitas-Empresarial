@@ -19,7 +19,7 @@ const SanitasEmpresarial = () => {
       </figure>
       <div className="form-container">
         <Form />
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </div>
   )

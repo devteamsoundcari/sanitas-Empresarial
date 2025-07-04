@@ -25,6 +25,7 @@ const SanitasEmpresarialProvider = ({ children }) => {
   const [city, setCity] = React.useState('')
   const [cityName, setCityName] = React.useState('')
   const [cityError, setCityError] = React.useState('')
+  const [serviceTypeError, setServiceTypeError] = React.useState(false)
   const [recaptchaError, setRecaptchaError] = React.useState(false)
   const [showInputs, setShowInputs] = React.useState(false)
   const [checked, setChecked] = React.useState(false)
@@ -102,7 +103,19 @@ const SanitasEmpresarialProvider = ({ children }) => {
   ]
 
   /** Tipos de servicio que puede seleccionar el usuario. Inicialmente sólo es un objeto, pero podrían aumentar. Mirar si esto después debe convertirse en un array */
-  const [serviceType] = React.useState({ value: 1, name: 'Incapacidades' })
+  const serviceTypeList = [
+    { value: 1, name: 'Incapacidades' }, 
+    { value: 2, name: 'Solicitud de registro' }, 
+    { value: 3, name: 'Empresa no recibe recordación de contraseña' }, 
+    { value: 4, name: 'Actualización usuario administrador portal empleadores' },
+    {value: 5, name: 'No permite la radicación de incapacidades' },
+    {value: 6, name: 'Empresa no recibe código de verificación' },
+    {value: 7, name: 'Error de tipo técnico o tecnológico' },
+    {value: 8, name: 'Empresa no recibe usuario y clave de acceso' }
+  ]
+
+  /** Array con tipos de servicio. Reqwuerimiento 03/07/2025 */
+  const [serviceType, setServiceType] = React.useState('')
 
   // Función para obtener la imagen del popup desde cari
   const getPopUpImage = async () => {
@@ -262,6 +275,10 @@ const SanitasEmpresarialProvider = ({ children }) => {
       setCityError(true)
       return
     }
+    if (serviceType === '' || serviceType === '0') {
+      setServiceTypeError(true)
+      return
+    }
 
     if (!captchaValue) {
       setRecaptchaError(true)
@@ -372,7 +389,9 @@ const SanitasEmpresarialProvider = ({ children }) => {
         city,
         setCity,
         documentTypeList,
+        serviceTypeList,
         serviceType,
+        setServiceType,
         callApi,
         cellPhoneError,
         setCellPhoneError,
@@ -423,6 +442,8 @@ const SanitasEmpresarialProvider = ({ children }) => {
         getPopUpImage,
         popUpImage,
         setPopUpImage,
+        serviceTypeError,
+        setServiceTypeError,
       }}
     >
       {children}

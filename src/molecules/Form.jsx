@@ -14,6 +14,7 @@ import '../styles/Form.css'
 import Loader from '../atoms/Loader'
 import { BubbleChat } from '../atoms/BubbleChat'
 import { ImageModal } from './ImageModal'
+import Footer from './Footer/index.jsx'
 
 const Form = () => {
   const {
@@ -35,7 +36,9 @@ const Form = () => {
     setProvince,
     city,
     setCity,
+    serviceTypeList,
     serviceType,
+    setServiceType,
     checked,
     setChecked,
     showServiceFailModal,
@@ -72,6 +75,8 @@ const Form = () => {
     setCaptchaValue,
     setUserName,
     showPopUp,
+    serviceTypeError,
+    setServiceTypeError,
   } = useContext(SanitasEmpresarialContext)
 
   const handleDocTypeChange = (e) => {
@@ -145,6 +150,16 @@ const Form = () => {
 
     setCity(value)
     setCityName(label)
+  }
+
+  const handleServiceTypeChange = (e) => {
+    const value = e.target.value
+    if (value === '') {
+      setServiceTypeError(true)
+    } else {
+      setServiceTypeError(false)
+    }
+    setServiceType(value)
   }
 
   const handleCaptchaChange = (value) => {
@@ -333,6 +348,7 @@ const Form = () => {
       cellPhone.length !== 10 ||
       province === '' ||
       city === '' ||
+      serviceType === '' ||
       !captchaValue ||
       !checked
     ) {
@@ -341,12 +357,13 @@ const Form = () => {
       setDisabled(false)
     }
     // eslint-disable-next-line
-  }, [docType, docNumber, cellPhone, province, city, captchaValue, checked])
+  }, [docType, docNumber, cellPhone, province, city, serviceType, captchaValue, checked])
 
   return (
     <div className="right-side">
       <div className="top">
-        <Header type={1} text={'¡Nuestro compromiso es contigo!'} />
+        <Header type={1} text={'Bienvenido a nuestro Asesor Virtual Empresas ¡Nuestro compromiso es contigo!'} />
+        <Footer />
         <AttentionSchedule />
       </div>
       <Paragraph
@@ -454,13 +471,15 @@ const Form = () => {
             dataValue={cityName}
           />
           <Input2
-            label={'Tipo de servicio'}
-            type={'text'}
+            label={serviceTypeError ? 'Selecciona un tipo de servicio': 'Tipo de servicio'}
+            type={'select'}
             name={'service-type'}
             id={'service-type'}
             className={'service-type'}
-            value={serviceType.name}
-            disabled={true}
+            value={serviceType}
+            options={serviceTypeList}
+            onChange={handleServiceTypeChange}
+            serviceTypeError={serviceTypeError}
           />
         </div>
         {recaptchaError ? (
