@@ -46,6 +46,7 @@ const SanitasEmpresarialProvider = ({ children }) => {
   //Estados para modales
   const [showServiceFailModal, setShowServiceFailModal] = React.useState(false)
   const [showNotEmployerModal, setShowNotEmployerModal] = React.useState(false)
+  // const [fullOptions, setFullOptions] = React.useState(false)
 
   //REF Para el captcha
   const captcha = React.useRef(null)

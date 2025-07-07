@@ -85,11 +85,11 @@ const Input2 = ({
           data-value={dataValue}
         >
           {label}
-          <option value="">Selecciona una opción</option>
+          <option value="" disabled={value !== ""}>Selecciona una opción</option>
           {options.map((option) => {
             // console.log(option)
             return (
-              <option key={option.id} value={option.value}>
+              <option key={option.id} value={option.value} disabled={option.value === "" && value !== ""}>
                 {option.name}
               </option>
             )

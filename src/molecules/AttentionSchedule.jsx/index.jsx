@@ -9,7 +9,7 @@ const AttentionSchedule = ({ wvType }) => {
         <>
           <div className="div-header">
             <img src={clock} alt="Reloj" className="schedule-icon" />
-            <p className="schedule-title">Horario de atención</p>
+            <p className="schedule-title">Horario de atención agentes</p>
           </div>
           <p className="schedule-info">
             Lunes a viernes de 7:00am a 5:00pm - Sábados de 8:00am a 12:00pm

@@ -480,6 +480,7 @@ const Form = () => {
             options={serviceTypeList}
             onChange={handleServiceTypeChange}
             serviceTypeError={serviceTypeError}
+            onBlur={onBlurEvent}
           />
         </div>
         {recaptchaError ? (
