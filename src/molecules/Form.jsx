@@ -276,6 +276,10 @@ const Form = () => {
             setUserName(user.nameUser)
             setDocTypeDisabled(true)
             setFormLoader(false)
+          } else {
+            setFormLoader(false)
+            setShowNotEmployerModal(true)
+            console.error('El error es', data.message)
           }
         })
         .catch((error) => {

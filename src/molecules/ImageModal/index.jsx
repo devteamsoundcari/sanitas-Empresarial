@@ -11,7 +11,7 @@ const ImageModal = () => {
 
   return (
     <Modal className={'overlay'} open={showPopUp}>
-      <div className="base-modal">
+      <div className="img-base-modal">
         <img
           src={popUpImage}
           className="image-modal"

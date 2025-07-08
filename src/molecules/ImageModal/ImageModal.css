@@ -1,6 +1,7 @@
-.base-modal {
-  background: #1f1e1e;
-  padding: 0px 0px 10px 0px;
+.img-base-modal {
+  background: #1f1e1e !important;
+  background: var(--keralty-neutral-gray0);
+  padding: 0px 15px 10px 15px;
   border-radius: 8px;
   width: 400px;
   display: flex;

@@ -34,7 +34,7 @@ const SanitasEmpresarialProvider = ({ children }) => {
   const [formLoader, setFormLoader] = React.useState(false)
   const [loader, setLoader] = React.useState(false)
   const [url] = React.useState(
-    'https://qa.cariai.com/epssanitasempresadevelop/process'
+    'https://cariai.com/epssanitasempresadevelop/process'
   )
   const [captchaValue, setCaptchaValue] = React.useState(null)
   const [registerId, setRegisterId] = React.useState(null)
