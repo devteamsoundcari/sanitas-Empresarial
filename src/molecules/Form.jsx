@@ -77,6 +77,7 @@ const Form = () => {
     showPopUp,
     serviceTypeError,
     setServiceTypeError,
+    calendarMessage,
   } = useContext(SanitasEmpresarialContext)
 
   const handleDocTypeChange = (e) => {
@@ -368,7 +369,7 @@ const Form = () => {
       <div className="top">
         <Header type={1} text={'Bienvenido a nuestro Asesor Virtual Empresas ¡Nuestro compromiso es contigo!'} />
         <Footer />
-        <AttentionSchedule />
+        <AttentionSchedule calendarMessage={calendarMessage} wvType={'schedule'} />
       </div>
       <Paragraph
         text={

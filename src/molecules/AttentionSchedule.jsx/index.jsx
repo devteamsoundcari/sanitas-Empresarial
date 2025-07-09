@@ -1,20 +1,23 @@
-import React from 'react'
+// import React from 'react'
 import clock from '../../assets/images/clock.svg'
 import './AttentionSchedule.css'
+import PropTypes from 'prop-types'
 
-const AttentionSchedule = ({ wvType }) => {
+const AttentionSchedule = ({ wvType, calendarMessage }) => {
   return (
     <div className="schedule-container">
       {wvType === 'schedule' ? (
-        <>
+        <div className="schedule-content">
           <div className="div-header">
             <img src={clock} alt="Reloj" className="schedule-icon" />
-            <p className="schedule-title">Horario de atención agentes</p>
           </div>
+          <p className="schedule-title">Horario de atención agentes</p>
           <p className="schedule-info">
-            Lunes a viernes de 7:00am a 5:00pm - Sábados de 8:00am a 12:00pm
+            {calendarMessage
+              ? calendarMessage
+              : 'Lunes a viernes de 7:00 a.m. a 5:00 p.m. - Sábados de 7:00 a.m. a 12:00 p.m.'}
           </p>
-        </>
+        </div>
       ) : (
         <>
           <figure className="out-of-time-icon-cont">
@@ -24,7 +27,9 @@ const AttentionSchedule = ({ wvType }) => {
             Horario de atención
           </h4>
           <p className="out-of-time-paragraph schedule-info">
-            Lunes a viernes de 7:00am a 5:00pm - Sábados de 8:00am a 12:00pm
+            {calendarMessage
+              ? calendarMessage
+              : 'Lunes a viernes de 7:00 a.m. a 5:00 p.m. - Sábados de 7:00 a.m. a 12:00 p.m.'}
           </p>
         </>
       )}
@@ -33,3 +38,8 @@ const AttentionSchedule = ({ wvType }) => {
 }
 
 export { AttentionSchedule }
+
+AttentionSchedule.propTypes = {
+  wvType: PropTypes.string,
+  calendarMessage: PropTypes.string,
+}

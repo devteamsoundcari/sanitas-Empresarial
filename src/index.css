@@ -63,3 +63,9 @@ input:-webkit-autofill {
 input:-moz-autofill {
   background-color: transparent;
 }
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}

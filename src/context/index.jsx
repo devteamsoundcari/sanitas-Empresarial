@@ -117,6 +117,7 @@ const SanitasEmpresarialProvider = ({ children }) => {
 
   /** Array con tipos de servicio. Reqwuerimiento 03/07/2025 */
   const [serviceType, setServiceType] = React.useState('')
+  const [calendarMessage, setCalendarMessage] = React.useState('Lunes a viernes de 7:00 a.m. a 5:00 p.m. - Sábados de 7:00 a.m. a 12:00 p.m.')
 
   // Función para obtener la imagen del popup desde cari
   const getPopUpImage = async () => {
@@ -297,7 +298,7 @@ const SanitasEmpresarialProvider = ({ children }) => {
       cellPhone: cellPhone,
       provName: provName,
       cityName: cityName,
-      serviceType: serviceType.name,
+      serviceType: serviceType,
     }
 
     let operation = 'userFormInfo'
@@ -358,6 +359,29 @@ const SanitasEmpresarialProvider = ({ children }) => {
     })
   }
 
+  const validateCalendar = async (date) => {
+    const data = new FormData()
+    data.append('operation', 'validateCalendar')
+    data.append('dateConsult', date)
+    const requestOptions = {
+      method: 'POST',
+      body: data,
+      redirect: 'follow',
+    }
+    try {
+      const res = await fetch(url, requestOptions)
+      const response = await res.json()
+      // console.log("Respuesta calendario", response)
+      if (response.message) {
+        console.log("MEnsaje calendario", response.message.description_calendar)
+        setCalendarMessage(response.message.description_calendar)
+      }
+      return response
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   /*const tempCityApi = async () => {
     const url = 'https://www.datos.gov.co/resource/xdk5-pm3f.json'
 
@@ -368,7 +392,10 @@ const SanitasEmpresarialProvider = ({ children }) => {
 
   React.useEffect(() => {
     getPopUpImage()
-  }, [])
+    const date = new Date()
+    const formattedDate = date.toISOString()
+    validateCalendar(formattedDate)
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <SanitasEmpresarialContext.Provider
@@ -445,6 +472,7 @@ const SanitasEmpresarialProvider = ({ children }) => {
         setPopUpImage,
         serviceTypeError,
         setServiceTypeError,
+        calendarMessage
       }}
     >
       {children}
