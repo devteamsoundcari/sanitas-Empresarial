@@ -66,7 +66,7 @@ const Input2 = ({
           id={id}
           value={value}
           onChange={onChange}
-          className={className}
+          className={`${className}-input`}
           disabled={disabled}
           onBlur={onBlur}
           onKeyDown={onKeyDown}
@@ -237,3 +237,4 @@ const Input2 = ({
 }
 
 export { Input2 }
+

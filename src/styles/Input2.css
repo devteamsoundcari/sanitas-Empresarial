@@ -14,6 +14,10 @@
   max-width: 300px;
 }
 
+.docNumber {
+  width: 46%;
+}
+
 .inputBox .fileInput {
   flex-direction: column;
 }
@@ -49,11 +53,28 @@ input:focus {
   background-color: transparent;
   max-height: 34px;
 }
+
+@media (min-width: 451px) and (max-width: 1750px) {
+  .docNumber {
+    width: 48%;
+  }
+}
+
+@media (min-width: 451px) and (max-width: 1280px) {
+  .inputBox {
+      width: 100%;
+      margin: 0px 0px 12px 0px;
+    }
+}
+
 /*estilos para dispositivo mobile*/
 @media (max-width: 450px) {
   .inputBox {
     width: 100%;
     margin: 0px 0px 12px 0px;
+  }
+  .docNumber {
+    width: 100%;
   }
 }
 /* controlador para los inputs*/

@@ -39,7 +39,7 @@
 }
 
 /*/Diseño de dispositivos del ancho hasta 850px (propuesta de tablet)*/
-@media (min-width: 451px) and (max-width: 1366px) {
+@media (min-width: 451px) and (max-width: 1750px) {
   .container {
     display: flex;
     flex-direction: column;
