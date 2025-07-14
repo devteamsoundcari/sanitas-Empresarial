@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { SanitasEmpresarialContext } from '../context'
 
 import { Input2 } from '../atoms/Input2'
-import Header from './Header'
+// import Header from './Header'
 import { Paragraph } from '../atoms/Paragraph'
 import { AttentionSchedule } from '../molecules/AttentionSchedule.jsx'
 import ReCAPTCHA from 'react-google-recaptcha'
@@ -15,6 +15,7 @@ import Loader from '../atoms/Loader'
 import { BubbleChat } from '../atoms/BubbleChat'
 import { ImageModal } from './ImageModal'
 import Footer from './Footer/index.jsx'
+import './Header/Header.css'
 
 const Form = () => {
   const {
@@ -362,14 +363,33 @@ const Form = () => {
       setDisabled(false)
     }
     // eslint-disable-next-line
-  }, [docType, docNumber, cellPhone, province, city, serviceType, captchaValue, checked])
+  }, [
+    docType,
+    docNumber,
+    cellPhone,
+    province,
+    city,
+    serviceType,
+    captchaValue,
+    checked,
+  ])
 
   return (
     <div className="right-side">
       <div className="top">
-        <Header type={1} text={'Bienvenido a nuestro Asesor Virtual Empresas ¡Nuestro compromiso es contigo!'} />
+        {/* <Header type={1} text={'Bienvenido a nuestro Asesor Virtual Empresas \n¡Nuestro compromiso es contigo!'} /> */}
+        <header>
+          <h1 className={'main-title'}>
+            Bienvenido a nuestro Asesor Virtual Empresas
+            <br />
+            ¡Nuestro compromiso es contigo!
+          </h1>
+        </header>
         <Footer />
-        <AttentionSchedule calendarMessage={calendarMessage} wvType={'schedule'} />
+        <AttentionSchedule
+          calendarMessage={calendarMessage}
+          wvType={'schedule'}
+        />
       </div>
       <Paragraph
         text={
@@ -475,8 +495,14 @@ const Form = () => {
             onBlur={onBlurEvent}
             dataValue={cityName}
           />
+        </div>
+        <div className="caja">
           <Input2
-            label={serviceTypeError ? 'Selecciona un tipo de servicio': 'Tipo de servicio'}
+            label={
+              serviceTypeError
+                ? 'Selecciona un tipo de servicio'
+                : 'Tipo de servicio'
+            }
             type={'select'}
             name={'service-type'}
             id={'service-type'}
@@ -486,6 +512,14 @@ const Form = () => {
             onChange={handleServiceTypeChange}
             serviceTypeError={serviceTypeError}
             onBlur={onBlurEvent}
+          />
+          <Input2
+            label={' '}
+            type={'hidden'}
+            name={'hidden-input'}
+            id={'hidden-input'}
+            className={'cellPhone'}
+            value={''}
           />
         </div>
         {recaptchaError ? (
@@ -528,16 +562,7 @@ const Form = () => {
             onChange={handleCheck}
           />
           <p className={checked ? 'bold' : ''}>
-            He leído y acepto el{' '}
-            <a
-              href="https://www.epssanitas.com/usuarios/web/nuevo-portal-eps/terminos-y-condiciones#gsc.tab=0"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={checked ? `link-- bold` : `link--`}
-            >
-              Tratamiento de datos personales
-            </a>{' '}
-            y{' '}
+            Acepto{' '}
             <a
               href="https://www.epssanitas.com/usuarios/web/nuevo-portal-eps/politicas-de-privacidad#gsc.tab=0"
               target="_blank"
@@ -545,7 +570,15 @@ const Form = () => {
               className={checked ? `link-- bold` : `link--`}
             >
               {' '}
-              Política de privacidad.
+              Políticas
+            </a>{' '}
+            <a
+              href="https://www.epssanitas.com/usuarios/web/nuevo-portal-eps/terminos-y-condiciones#gsc.tab=0"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={checked ? `link-- bold` : `link--`}
+            >
+              protección datos.
             </a>
           </p>
         </div>

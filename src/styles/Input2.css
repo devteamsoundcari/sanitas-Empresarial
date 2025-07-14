@@ -6,13 +6,13 @@
   gap: 10px;
 }
 
-.department {
+/* .department {
   max-width: 300px;
 }
 
 .city {
   max-width: 300px;
-}
+} */
 
 .docNumber {
   width: 46%;
@@ -58,13 +58,27 @@ input:focus {
   .docNumber {
     width: 48%;
   }
+
+  .service-type {
+    width: 48%;
+  }
+}
+
+@media (min-width: 1281px) and (max-width: 1536px) {
+  .docNumber {
+    width: 46%;
+  }
+
+  .service-type {
+    width: 47%;
+  }
 }
 
 @media (min-width: 451px) and (max-width: 1280px) {
   .inputBox {
-      width: 100%;
-      margin: 0px 0px 12px 0px;
-    }
+    width: 100%;
+    margin: 0px 0px 12px 0px;
+  }
 }
 
 /*estilos para dispositivo mobile*/
@@ -74,6 +88,9 @@ input:focus {
     margin: 0px 0px 12px 0px;
   }
   .docNumber {
+    width: 100%;
+  }
+  .service-type {
     width: 100%;
   }
 }

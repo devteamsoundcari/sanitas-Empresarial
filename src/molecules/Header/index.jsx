@@ -1,5 +1,6 @@
-import React from 'react'
+// import React from 'react'
 import './Header.css'
+import PropTypes from 'prop-types'
 
 const Header = ({ type, text, className }) => {
   switch (type) {
@@ -55,3 +56,9 @@ const Header = ({ type, text, className }) => {
 }
 
 export default Header
+
+Header.propTypes = {
+  type: PropTypes.oneOf([1, 2, 3, 4, 5, 6]),
+  text: PropTypes.string,
+  className: PropTypes.string
+}

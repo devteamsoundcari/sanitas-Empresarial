@@ -1,7 +1,7 @@
 @font-face {
-  font-family: "Proxima Nova";
-  src: url("./assets/fonts/Proxima_Nova_Regular.otf"),
-    url("./assets/fonts/Proxima_Nova_Extrabold.otf");
+  font-family: 'Proxima Nova';
+  src: url('./assets/fonts/Proxima_Nova_Regular.otf'),
+    url('./assets/fonts/Proxima_Nova_Extrabold.otf');
 }
 
 :root {
@@ -20,8 +20,8 @@
   --keralty-softgreen: #e7fff9;
   --keralty-softblue: #e5faff;
   --keralty-semantics-error: #b50303;
-  --keralty-proxima-nova-main-font: "Proxima Nova", sans-serif;
-  --keralty-roboto-secundaria-font: "Roboto", sans-serif;
+  --keralty-proxima-nova-main-font: 'Proxima Nova', sans-serif;
+  --keralty-roboto-secundaria-font: 'Roboto', sans-serif;
   --keralty-medium-font: 22px;
   --keralty-small-font: 14px;
   --keralty-large-font: 32px;
@@ -43,13 +43,13 @@ body {
   font-size: 1.6rem; /* Se deja la letra en 16px por defecto */
 }
 
-input[type="number"] {
+input[type='number'] {
   appearance: unset;
   -moz-appearance: textfield;
 }
 
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
@@ -68,4 +68,8 @@ select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6,9 12,15 18,9"></polyline></svg>');
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 16px 16px;
 }

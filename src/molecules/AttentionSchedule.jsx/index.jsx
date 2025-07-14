@@ -11,7 +11,7 @@ const AttentionSchedule = ({ wvType, calendarMessage }) => {
           <div className="div-header">
             <img src={clock} alt="Reloj" className="schedule-icon" />
           </div>
-          <p className="schedule-title">Horario de atención agentes</p>
+          <p className="schedule-title">Horario de atención de agentes</p>
           <p className="schedule-info">
             {calendarMessage
               ? calendarMessage

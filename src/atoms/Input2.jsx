@@ -85,11 +85,17 @@ const Input2 = ({
           data-value={dataValue}
         >
           {label}
-          <option value="" disabled={value !== ""}>Selecciona una opción</option>
+          <option value="" disabled={value !== ''}>
+            Selecciona una opción
+          </option>
           {options.map((option) => {
             // console.log(option)
             return (
-              <option key={option.id} value={option.value} disabled={option.value === "" && value !== ""}>
+              <option
+                key={option.id}
+                value={option.value}
+                disabled={option.value === '' && value !== ''}
+              >
                 {option.name}
               </option>
             )
@@ -153,6 +159,23 @@ const Input2 = ({
     //     />
     //   );
     // }
+  }
+
+  if (type === 'hidden') {
+    return (
+      <div className={className ? `inputBox ${className}` : 'inputBox'}>
+        <label></label>
+        <input
+          type="hidden"
+          placeholder={placeHolder}
+          name={name}
+          id={id}
+          value={value}
+          onChange={onChange}
+          className={className}
+        />
+      </div>
+    )
   }
 
   if (type === 'text-disabled') {
@@ -237,4 +260,3 @@ const Input2 = ({
 }
 
 export { Input2 }
-
