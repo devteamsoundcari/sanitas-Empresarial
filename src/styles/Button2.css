@@ -11,6 +11,7 @@
   background-color: var(--keralty-green);
   color: var(--keralty-neutral-gray0);
   font-weight: 600;
+  font-family: 'Figtree', sans-serif;
   padding: 12px 30px;
   font-size: 1.6rem;
   display: flex;
@@ -51,6 +52,7 @@
   background-color: transparent;
   color: var(--keralty-secondary-blue);
   font-weight: 600;
+  font-family: 'Figtree', sans-serif;
   padding: 12px 20px;
   font-size: 1.6rem;
   display: flex;

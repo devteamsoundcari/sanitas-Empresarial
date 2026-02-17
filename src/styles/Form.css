@@ -99,6 +99,7 @@
   align-items: center;
   gap: 15px;
   padding: 10px 40px 10px 40px;
+  font-family: 'Figtree', sans-serif;
   border-radius: 20px;
   border: none;
   background-color: var(--keralty-third-blue);
@@ -114,6 +115,7 @@
   background-color: var(--keralty-gray500);
   color: var(--keralty-gray700);
   font-weight: 600;
+  font-family: 'Figtree', sans-serif;
   cursor: default;
 }
 
@@ -122,6 +124,13 @@
   align-items: center;
   justify-content: center;
 } */
+
+.copyright-cont {
+  justify-content: center;
+  margin-bottom: 2%;
+  font-size: 14px;
+  font-family: 'Figtree', sans-serif;
+}
 
 @media (width < 1300px) {
   .caja,

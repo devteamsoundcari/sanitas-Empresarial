@@ -247,6 +247,14 @@ const Form = () => {
         setCityError(false)
       }
     }
+
+    if (eventName === 'service-type') {
+      if (serviceType === '') {
+        setServiceTypeError(true)
+      } else {
+        setServiceTypeError(false)
+      }
+    }
   }
 
   // Método para validar si la empresa existe en EPS Sanitas
@@ -400,11 +408,8 @@ const Form = () => {
       <form method="POST" className="form" onSubmit={handleSubmit}>
         <div className="caja">
           <Input2
-            label={
-              docTypeError
-                ? 'Selecciona un Tipo de documento'
-                : 'Tipo de documento'
-            }
+            label={'Tipo de documento'}
+            errorText={'Por favor selecciona un tipo de documento'}
             type="select"
             options={documentTypeList}
             value={docType}
@@ -417,11 +422,8 @@ const Form = () => {
             onBlur={onBlurEvent}
           />
           <Input2
-            label={
-              docNumError
-                ? 'Ingresa un número de documento'
-                : 'Número de documento'
-            }
+            label={'Número de documento'}
+            errorText={'Por favor ingresa un número de documento válido'}
             type={'text'}
             name={'docNumber'}
             id={'docNumber'}
@@ -453,9 +455,8 @@ const Form = () => {
             className={'social-reason'}
           />
           <Input2
-            label={
-              cellPhoneError ? 'Escribe un número válido de celular' : 'Celular'
-            }
+            label={'Celular'}
+            errorText={'Por favor ingresa un número de celular válido'}
             type={'number'}
             name={'cellPhone'}
             id={'cellPhone'}
@@ -468,9 +469,8 @@ const Form = () => {
         </div>
         <div className="caja-3">
           <Input2
-            label={
-              provinceError ? 'Selecciona un Departamento' : 'Departamento'
-            }
+            label={'Departamento'}
+            errorText={'Por favor selecciona un departamento'}
             type="select"
             value={province}
             options={provincesList}
@@ -483,7 +483,8 @@ const Form = () => {
             dataValue={provName}
           />
           <Input2
-            label={cityError ? 'Selecciona una Ciudad' : 'Ciudad'}
+            label={'Ciudad'}
+            errorText={'Por favor selecciona una ciudad'}
             type="select"
             value={city}
             options={citiesList}
@@ -498,11 +499,8 @@ const Form = () => {
         </div>
         <div className="caja">
           <Input2
-            label={
-              serviceTypeError
-                ? 'Selecciona un tipo de servicio'
-                : 'Tipo de servicio'
-            }
+            label={'Tipo de servicio'}
+            errorText={'Por favor selecciona un tipo de servicio'}
             type={'select'}
             name={'service-type'}
             id={'service-type'}
@@ -522,15 +520,7 @@ const Form = () => {
             value={''}
           />
         </div>
-        {recaptchaError ? (
-          <p
-            style={{ color: '#b50303', textAlign: 'center', marginTop: '10px' }}
-          >
-            Es necesario que verifiques que no eres un robot
-          </p>
-        ) : (
-          <div style={{ height: '20px', margin: '10px 0px 0px 0px' }}></div>
-        )}
+
         <div className="captchaBox">
           <ReCAPTCHA
             ref={captcha}
@@ -540,19 +530,16 @@ const Form = () => {
             onExpired={handleCaptchaExpired}
           />
         </div>
-        {checkedError ? (
+        {recaptchaError ? (
           <p
-            style={{
-              color: '#b50303',
-              textAlign: 'center',
-              margin: '10px 0px 0px 0px',
-            }}
+            style={{ color: '#b50303', textAlign: 'center', marginTop: '10px' }}
           >
-            Debes aceptar el tratamiento de datos personales
+            Es necesario que verifiques que no eres un robot
           </p>
         ) : (
           <div style={{ height: '20px', margin: '10px 0px 0px 0px' }}></div>
         )}
+
         <div className="checkInput">
           <input
             type="checkbox"
@@ -582,6 +569,20 @@ const Form = () => {
             </a>
           </p>
         </div>
+        {checkedError ? (
+          <p
+            style={{
+              color: '#b50303',
+              textAlign: 'center',
+              margin: '10px 0px 0px 0px',
+            }}
+          >
+            Debes aceptar el tratamiento de datos personales
+          </p>
+        ) : (
+          <div style={{ height: '20px', margin: '10px 0px 0px 0px' }}></div>
+        )}
+
         <div className="btn-container">
           <Button
             className={'ingresar-btn'}
@@ -597,6 +598,9 @@ const Form = () => {
           </Button>
         </div>
       </form>
+      <div className="copyright-cont">
+        <p className="copyright">© Copyright 2023 EPS Sanitas</p>
+      </div>
       {showServiceFailModal && <ServiceFailModal />}
       {showNotEmployerModal && <NotEmployerModal />}
       {showPopUp && <ImageModal />}

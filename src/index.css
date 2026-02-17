@@ -1,7 +1,11 @@
 @font-face {
   font-family: 'Proxima Nova';
-  src: url('./assets/fonts/Proxima_Nova_Regular.otf'),
+  src:
+    url('./assets/fonts/Proxima_Nova_Regular.otf'),
     url('./assets/fonts/Proxima_Nova_Extrabold.otf');
+  src:
+    url('./assets/fonts/Figtree-VariableFont_wght.ttf'),
+    url('./assets/fonts/Figtree-Italic-VariableFont_wght.ttf');
 }
 
 :root {

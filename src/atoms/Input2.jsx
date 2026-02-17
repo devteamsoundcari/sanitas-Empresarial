@@ -29,6 +29,7 @@ const Input2 = ({
   onBlur,
   onKeyDown,
   dataValue,
+  errorText,
 }) => {
   if (!id) {
     id = label
@@ -59,48 +60,70 @@ const Input2 = ({
   const handleType = (type) => {
     if (type === 'text' || type === 'number' || type === 'email') {
       return (
-        <input
-          type={type}
-          placeholder={placeHolder}
-          name={name}
-          id={id}
-          value={value}
-          onChange={onChange}
-          className={`${className}-input`}
-          disabled={disabled}
-          onBlur={onBlur}
-          onKeyDown={onKeyDown}
-          required
-        />
+        <>
+          <input
+            type={type}
+            placeholder={placeHolder}
+            name={name}
+            id={id}
+            value={value}
+            onChange={onChange}
+            className={`${className}-input`}
+            disabled={disabled}
+            onBlur={onBlur}
+            onKeyDown={onKeyDown}
+            required
+          />
+          {numberDocError ? (
+            <p className="errorInput" style={{ fontSize: '14px' }}>
+              {errorText || 'Por favor ingresa un número de documento válido'}
+            </p>
+          ) : phoneError ? (
+            <p className="errorInput" style={{ fontSize: '14px' }}>
+              {errorText || 'Por favor ingresa un número de celular válido'}
+            </p>
+          ) : fullNameError ? (
+            <p className="errorInput" style={{ fontSize: '14px' }}>
+              {errorText || 'Por favor ingresa un nombre completo válido'}
+            </p>
+          ) : null}
+        </>
       )
     }
     if (type === 'select') {
       return (
-        <select
-          name={name}
-          id={id}
-          onChange={onChange}
-          disabled={disabled}
-          onBlur={onBlur}
-          data-value={dataValue}
-        >
-          {label}
-          <option value="" disabled={value !== ''}>
-            Selecciona una opción
-          </option>
-          {options.map((option) => {
-            // console.log(option)
-            return (
-              <option
-                key={option.id}
-                value={option.value}
-                disabled={option.value === '' && value !== ''}
-              >
-                {option.name}
-              </option>
-            )
-          })}
-        </select>
+        <>
+          <select
+            name={name}
+            id={id}
+            onChange={onChange}
+            disabled={disabled}
+            onBlur={onBlur}
+            data-value={dataValue}
+          >
+            {label}
+            <option value="" disabled={value !== ''}>
+              Selecciona una opción
+            </option>
+            {options.map((option) => {
+              // console.log(option)
+              return (
+                <option
+                  key={option.id}
+                  value={option.value}
+                  disabled={option.value === '' && value !== ''}
+                >
+                  {option.name}
+                </option>
+              )
+            })}
+          </select>
+          {docTypeError || serviceTypeError ? (
+            <p className="errorInput" style={{ fontSize: '14px' }}>
+              {errorText || 'Por favor selecciona un tipo de documento'}
+            </p>
+          ) : null}
+        </>
       )
     }
     if (type === 'checkbox') {
@@ -245,11 +268,8 @@ const Input2 = ({
   return (
     <div className={className ? `inputBox ${className}` : 'inputBox'}>
       <label
-        className={
-          docTypeError || numberDocError || serviceTypeError
-            ? 'errorInput'
-            : null
-        }
+        className={className ? `${className}-label` : 'inputBox-label'}
+        htmlFor={id}
       >
         {label}
         <span className="mandatory">*</span>

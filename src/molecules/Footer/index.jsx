@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 import { InfoIcon } from '../../atoms/InfoIcon'
 import pc from '../../assets/images/pc.svg'
 import cellphone from '../../assets/images/Cellphone.svg'
@@ -10,13 +10,13 @@ const Footer = () => {
     <footer className="footer-cont">
       <div className="funcionalidades-cont">
         <p className="funcionalidades">
-          Conoce todas las funcionalidades
+          Conoce todas las funcionalidades de
           <a
             href="https://www.epssanitas.com/usuarios/web/nuevo-portal-eps/canales-de-acceso#gsc.tab=0"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Aquí
+            canales virtuales
           </a>
         </p>
       </div>
@@ -46,9 +46,9 @@ const Footer = () => {
           />
         </div>
       </div>
-      <div className="copyright-cont">
-        <p className="copyright">© Copyright 2023 Colsanitas</p>
-      </div>
+      {/* <div className="copyright-cont">
+        <p className="copyright">© Copyright 2023 EPS Sanitas</p>
+      </div> */}
     </footer>
   )
 }
